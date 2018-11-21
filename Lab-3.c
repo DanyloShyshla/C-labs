@@ -1,55 +1,70 @@
 #include <stdio.h>
 #include <math.h>
-#define n 5
-void sort(int array[n][n]);
-void avrg(int array[n][n]);
-int main() {
-     int array[n][n] ={
-             {-12, 7, 23, 13, 4},
-             {-5, 23, 45, 67, -2},
-             {0, 15, 4, 9, -14},
-             {1, -4, 6, -2, 0},
-             {3, 33, -1, 0, -78}
 
-     };
-    sort(array);
-    avrg(array);
+#define MATRIX_SIZE 5
+
+void matrix_bubble_sort(int array[MATRIX_SIZE][MATRIX_SIZE]);
+
+void avrg_arithmetical_number(int array[MATRIX_SIZE][MATRIX_SIZE]);
+
+int main() {
+    int array[MATRIX_SIZE][MATRIX_SIZE];
+          printf("Please enter matrix with size 5x5 \n");
+               for(int row = 0; row < MATRIX_SIZE; row++)
+                    for(int column = 0; column < MATRIX_SIZE; column++)
+            scanf("%d", &matrix[row][column]);
+    matrixInsertionSort(matrix);
+    printToConsoleRowsSum(matrix);
     return 0;
 }
-void sort(int array[n][n]){
-    int i, k, j, c;
-    for(i = 0; i < n; i++)
+
+void matrixInput(int matrix[MATRIX_SIZE][MATRIX_SIZE]) {
+    for(int row = 0; row < MATRIX_SIZE; row++)
     {
-        for(k = n-1; k>=0; k--) {
-            for (j = 0; j < k; j++) {
-                if (array[i][j] < array[i][j + 1]) {
-                    c = array[i][j];
-                    array[i][j] = array[i][j + 1];
-                    array[i][j + 1] = c;
+        for(int column=0; column<MATRIX_SIZE; column++)
+            printf("%d\t", matrix[row][column]);
+        printf("\n");
+    }
+}
+    matrix_bubble_sort(array);
+    avrg_arithmetical_number(array);
+    return 0;
+}
+
+void matrix_bubble_sort(int array[MATRIX_SIZE][MATRIX_SIZE]) {
+    int row, temporary_index, column, element;
+    for (row = 0; row < MATRIX_SIZE; row++) {
+        for (temporary_index = MATRIX_SIZE - 1; temporary_index >= 0; temporary_index--) {
+            for (column = 0; column < temporary_index; column++) {
+                if (array[row][column] < array[row][column + 1]) {
+                    element = array[row][column];
+                    array[row][column] = array[row][column + 1];
+                    array[row][column + 1] = element;
                 }
             }
         }
     }
-    for(i=0; i<n; i++){
-        for (j = 0; j < n; j++) {
-            printf("%d\t",array[i][j]);
+    for (row = 0; row < MATRIX_SIZE; row++) {
+        for (column = 0; column < MATRIX_SIZE; column++) {
+            printf("%d\t", array[row][column]);
         }
         printf("\n");
 
     }
 }
-void avrg(int array[n][n]) {
-    int i,j,s;
-    float k = 1;
-    for (i = 0; i < n; i++) {
-        s = 0;
-        for (j = 0; j < n; j++) {
-            s += array[i][j];
-        }
-        float output = (float) s/n;
-        k = output*k;
 
-        printf("f() = %f\n",output);
-        printf("*() = %f\n",k);
+void avrg_arithmetical_number(int array[MATRIX_SIZE][MATRIX_SIZE]) {
+    int row, column, next_column;
+    float avrg_arithmetical_number = 1;
+    for (row = 0; row < MATRIX_SIZE; row++) {
+        next_column = 0;
+        for (column = 0; column < MATRIX_SIZE; column++) {
+            next_column += array[row][column];
+        }
+        float output = (float) next_column / MATRIX_SIZE;
+        avrg_arithmetical_number = output * avrg_arithmetical_number;
+
+        printf("f() = %f\n", output);
+        printf("*() = %f\n", avrg_arithmetical_number);
     }
 }
