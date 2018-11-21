@@ -13,16 +13,16 @@ int main() {
                for(int row = 0; row < MATRIX_SIZE; row++)
                     for(int column = 0; column < MATRIX_SIZE; column++)
             scanf("%d", &matrix[row][column]);
-    matrixInsertionSort(matrix);
-    printToConsoleRowsSum(matrix);
+    matrixInsertionSort(array);
+    printToConsoleRowsSum(array);
     return 0;
 }
 
-void matrixInput(int matrix[MATRIX_SIZE][MATRIX_SIZE]) {
+void matrixInput(int array[MATRIX_SIZE][MATRIX_SIZE]) {
     for(int row = 0; row < MATRIX_SIZE; row++)
     {
         for(int column=0; column<MATRIX_SIZE; column++)
-            printf("%d\t", matrix[row][column]);
+            printf("%d\t", array[row][column]);
         printf("\n");
     }
 }
