@@ -26,9 +26,6 @@ void matrixInput(int array[MATRIX_SIZE][MATRIX_SIZE]) {
         printf("\n");
     }
 }
-    matrix_bubble_sort(array);
-    avrg_arithmetical_number(array);
-    return 0;
 }
 
 void matrix_bubble_sort(int array[MATRIX_SIZE][MATRIX_SIZE]) {
